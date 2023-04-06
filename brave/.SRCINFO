@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = Web browser that blocks ads and trackers by default
-	pkgver = 1.49.132
+	pkgver = 1.50.114
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -66,12 +66,11 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	options = !lto
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.49.132
-	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.49.132
-	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=111.0.5563.147
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.50.114
+	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.50.114
+	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=112.0.5615.49
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v8/chromium-launcher-8.tar.gz
-	source = https://github.com/stha09/chromium-patches/releases/download/chromium-111-patchset-2/chromium-111-patchset-2.tar.xz
 	source = chromium-launcher-electron-app.patch
 	source = chromium-launcher-vendor.patch
 	source = system-rust-utils.patch

@@ -28,7 +28,7 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.49.132
+pkgver=1.50.114
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default'
 arch=(x86_64)
@@ -46,8 +46,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-_chromium_ver=111.0.5563.147
-_gcc_patchset=2
+_chromium_ver=112.0.5615.49
 _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkgver"
@@ -55,7 +54,6 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         "chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=$_chromium_ver"
         'depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
         "https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz"
-        "https://github.com/stha09/chromium-patches/releases/download/$_patchset_name/$_patchset_name.tar.xz"
         chromium-launcher-electron-app.patch
         chromium-launcher-vendor.patch
         system-rust-utils.patch
@@ -80,7 +78,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'a016588340f1559198e4ce61c6e91c48cf863600f415cb5c46322de7e1f77909'
             '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5'
             '404bf09df39310a1e374c5e7eb9c7311239798adf4e8cd85b7ff04fc79647f88'
             'a8b119138c7157a71f2d1240bea5a2af9593d6b774586f5cc337b344cd9a18b8'
@@ -223,8 +220,6 @@ prepare() {
   # Disable kGlobalMediaControlsCastStartStop by default
   # https://crbug.com/1314342
   patch -Np1 -i "${srcdir}/disable-GlobalMediaControlsCastStartStop.patch"
-
-  # Fixes for building with libstdc++ instead of libc++
 
   # Hacky patching
   sed -e 's/\(enable_distro_version_check =\) true/\1 false/g' -i chrome/installer/linux/BUILD.gn
